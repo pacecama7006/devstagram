@@ -21,11 +21,11 @@
                     @enderror
                 </div>
                 <div class="mb-5">
-                    <label for="userName" class="mb-2 block uppercase text-gray-500 font-bold">
+                    <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
                         UserName
                     </label>
-                    <input type="text" name="userName" id="userName" class="border p-3 w-full rounded-lg @error('userName') border-red-500 @enderror" placeholder="Tu nombre de usuario" value="{{old('userName')}}">
-                    @error('userName')
+                    <input type="text" name="username" id="username" class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror" placeholder="Tu nombre de usuario" value="{{old('username')}}">
+                    @error('username')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center p-2|">{{ $message }} </p>
                     @enderror
                 </div>
@@ -42,7 +42,7 @@
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
                         Password
                     </label>
-                    <input type="password" name="password" id="password" class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror" placeholder="Genera tu password" value="{{old('password')}}">
+                    <input type="password" name="password" id="password" class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror" placeholder="Genera tu password">
                     @error('password')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center p-2|">{{ $message }} </p>
                     @enderror
@@ -51,7 +51,7 @@
                     <label for="password_confirmation" class="mb-2 block uppercase text-gray-500 font-bold">
                         Repetir Password
                     </label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="border p-3 w-full rounded-lg @error('password_confirmation') border-red-500 @enderror" placeholder="Repite tu password" value="{{old('password_confirmation')}}">
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="border p-3 w-full rounded-lg @error('password_confirmation') border-red-500 @enderror" placeholder="Repite tu password">
                     @error('password_confirmation')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm text-center p-2|">{{ $message }} </p>
                     @enderror
