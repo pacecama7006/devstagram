@@ -30,9 +30,7 @@ class LoginController extends Controller
             # code...
             return back()->with('mensaje', 'Email y/o password incorrectos');
         }
-        // En caso de que si se autentifique
-        return redirect()->route('posts.index', [
-            'user' => Auth::User()->username
-        ]);
+        // En caso de que si se autentifique y le paso parámetro del username
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
