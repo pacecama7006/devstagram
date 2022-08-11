@@ -52,12 +52,20 @@ class PostController extends Controller
         // ]);
 
         // Otra forma para crear el post
-        $post = new Post();
-        $post->titulo = $request->titulo;
-        $post->descripcion = $request->descripcion;
-        $post->imagen = $request->imagen;
-        $post->user_id = auth()->user()->id;
-        $post->save();
+        // $post = new Post();
+        // $post->titulo = $request->titulo;
+        // $post->descripcion = $request->descripcion;
+        // $post->imagen = $request->imagen;
+        // $post->user_id = auth()->user()->id;
+        // $post->save();
+
+        // Otra forma de almacenar datos utilizando las relaciones
+        $request->user()->posts()->create([
+                'titulo' => $request->titulo,
+                'descripcion' => $request->descripcion,
+                'imagen' => $request->imagen,
+                'user_id' => auth()->user()->id
+            ]);
         
         // Lo redirijo a su muro
         return redirect()->route('posts.index', auth()->user()->username);

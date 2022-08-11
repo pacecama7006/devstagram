@@ -20,4 +20,12 @@ class Post extends Model
         'imagen',
         'user_id'
     ];
+
+    // Relaciones
+
+    // Relación con User. Un post pertenece a un usuario
+    public function user()
+    {
+        return $this->belongsTo(User::class)->select(['name', 'username']);
+    }
 }
