@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PostController extends Controller
 {
@@ -87,5 +88,26 @@ class PostController extends Controller
             'post' => $post,
             'user' => $user
         ]);
+    }
+
+    public function destroy(Post $post){
+        // dd('Eliminando ', $post->id);
+
+        // Utilizo el PostPolicy, con su método delete
+        $this->authorize('delete', $post);
+
+        // Si pasa la policy
+        // Elimino el post
+        $post->delete();
+
+        // Elimino la imagen
+        $imagen_path = public_path('uploads/' . $post->imagen);
+
+        if (File::exists($imagen_path)) {
+            // Con función de php elimino la imagen
+            unlink($imagen_path);
+        }
+        // Lo regreso a su muro
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
