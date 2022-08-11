@@ -11,7 +11,7 @@ class PostController extends Controller
     // Protegemos el acceso a la página con el middlewere auth
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['show', 'index']);
     }
     //
     public function index(User $user)
