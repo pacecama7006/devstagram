@@ -20,8 +20,18 @@ class PostController extends Controller
         // con auth()->user autentifico al usuario
         // dd(auth()->user());
         // dd($user->username);
+
+        // Selecciono los posts del usuario
+        // $posts = Post::where('user_id', $user->id)->get();
+        // Hago paginación
+        $posts = Post::where('user_id', $user->id)->paginate(5);
+        // Esta es otra forma de mostrar la paginación. No me gusta tanto
+        // $posts = Post::where('user_id', $user->id)->simplePaginate(5);
+        // dd($posts);
+
         return view('dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts,
         ]);
     }
   
