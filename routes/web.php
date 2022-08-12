@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\FollowerController;
-use App\Http\Controllers\ImagenController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PerfilController;
-use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\RegisterController;
 
 
@@ -27,9 +28,9 @@ use App\Http\Controllers\RegisterController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('principal');
-});
+// Como HomeController sólo tiene un método se puede utilizar la route
+// de esta manera
+Route::get('/', HomeController::class)->name('home');
 
 // Rutas para el perfil
 Route::get('/editar-perfil', [PerfilController::class, 'index'])->name('perfil.index');

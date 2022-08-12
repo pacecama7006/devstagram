@@ -71,7 +71,7 @@
     <section class="container mx:auto mt-10">
         <h2 class="text-4xl font-black my-10 text-center">Publicaciones</h2>
 
-        @if ($posts->count()>0)
+        @if ($posts->count())
             <div class="mx-5 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach ($posts as $post)
                     <div>

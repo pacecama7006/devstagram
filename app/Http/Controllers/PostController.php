@@ -24,8 +24,8 @@ class PostController extends Controller
 
         // Selecciono los posts del usuario
         // $posts = Post::where('user_id', $user->id)->get();
-        // Hago paginación
-        $posts = Post::where('user_id', $user->id)->paginate(5);
+        // Ordeno del último al primero y Hago paginación
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(5);
         // Esta es otra forma de mostrar la paginación. No me gusta tanto
         // $posts = Post::where('user_id', $user->id)->simplePaginate(5);
         // dd($posts);
