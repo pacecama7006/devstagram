@@ -50,4 +50,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    // Con like.- Un usuario puede hacer uno o muchos likes. Un like es de un usuario
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
 }

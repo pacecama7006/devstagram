@@ -35,4 +35,16 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    // Relación con likes.- Un post tiene uno o muchos likes, un like pertenece a un post
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    // Función que permite validar si un usuario ya dio like
+    public function checkLike(User $user){
+        // Verifica en la relación si ya se tiene el user id en la bd
+        return $this->likes->contains('user_id', $user->id);
+    }
 }
