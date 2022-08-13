@@ -9,18 +9,43 @@
         <div class="md:w-1/2 p-5">
             <img src="{{ asset('uploads') . '/' .$post->imagen }}" alt="Imagen del post {{ $post->titulo }}">
             <div class="p-3 flex items-center gap-4">
-                @auth           
+                @auth
+                {{-- Así se genera código php en laravel --}}
+                {{-- @php
+                 $mensaje = 'Hola mundo desde una variable';   
+                @endphp --}}
                     {{-- Muestro componente livewire:like-post --}}
                     {{-- Le mando a like-post la variable $post --}}
                     <livewire:like-post :post="$post"/>
 
-                    {{--Eliminé todo el código de aquí, moviéndolo al
-                        like-post.blade y la lógica en likePost.php. Para
-                        utilizar componentes de livewire. En
-                        Show.blade.copy.php está como estaba  --}}
+                    {{-- Verifico que el usuario autenticado ya haya hecho like --}}
+                    {{-- Con el método checkLikes del modelo  post --}}
+                    {{-- @if ($post->checkLike(auth()->user()))
+                        <form action=" {{ route('posts.likes.destroy', $post )}}" method="POST"> --}}
+                            {{-- mÉTODO SPOOFING --}}
+                            {{-- @method('DELETE')
+                            @csrf
+                            <div class="my-4">
+                                
+                            </div>
+                        </form>
+                    @else
+                        <form action=" {{ route('posts.likes.store', $post )}}" method="POST">
+                            @csrf
+                            <div class="my-4">
+                                <button type="submit">
+                                    <svg class="w-6 h-6" fill="white"    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    @endif --}}
                      
                 @endauth
-                
+                {{-- Con la relación de post->likes, cuento los registros --}}
+                <p class="font-bold"> 
+                    {{ $post->likes->count() }} <span class="font-normal">likes</span>
+                </p>
             </div>
             <div>
                 <p class="font-bold"> {{ $post->user->username }}</p>
