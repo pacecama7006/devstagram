@@ -29,10 +29,9 @@ class HomeController extends Controller
         // ordenándolos del último al primero y me los pagina
         $posts = Post::whereIn('user_id', $ids)->latest()->paginate(20);
         // dd($posts);
-        
-        return view('home',[
+
+        return view('home', [
             'posts' => $posts
         ]);
     }
-    
 }
